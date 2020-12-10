@@ -9,15 +9,22 @@ const app = express();
 
 // Replace with your mongoLab URI
 const MONGO_URI =
-  "mongodb+srv://cdsalty:LyricalApp@lyrical-graphql.vkxo2.mongodb.net/<dbname>?retryWrites=true&w=majority";
+  "mongodb+srv://cdsalty:LyricalApp@lyrical-graphql.vkxo2.mongodb.net/Lyrical-GraphQL?retryWrites=true&w=majority";
 if (!MONGO_URI) {
   throw new Error("You must provide a MongoLab URI");
 }
 
 mongoose.Promise = global.Promise;
-mongoose.connect(MONGO_URI);
+mongoose.connect(MONGO_URI, {
+  authSource: "admin",
+  retryWrites: true,
+  dbName: "Lyrical-GraphQL",
+  useCreateIndex: true,
+  useNewUrlParser: true
+});
+// mongoose.connect(MONGO_URI);
 mongoose.connection
-  .once("open", () => console.log("Connected to MongoLab instance."))
+  .once("open", () => console.log("Connected to updated MLab alternative."))
   .on("error", error => console.log("Error connecting to MongoLab:", error));
 
 app.use(bodyParser.json());

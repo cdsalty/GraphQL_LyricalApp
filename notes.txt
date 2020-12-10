@@ -1,2 +1,22 @@
 localhost:4000
 localhost:4000/graphql
+
+
+
+Since mLab is migrating to MongoAtlas, you'll need to make the following changes.
+- First, go to your cluster in MongoAtlas, click the security tab, and then add a Atlas Admin. Remeber the username and pass as we will need them below in server.js! While here, grab your connection string by going back to your cluster, clicking the "Connect" button, "Connect Your Application", and then copy the connection string.
+- Next, update Mongoose to 5.4.x. Afterward, you'll need to modify your server.js file:
+
+const MONGO_URI = 'mongodb+srv://<username>:<password>@clusterNameHere.mongodb.net/';
+if (!MONGO_URI) {
+  throw new Error('You must provide a MongoAtlas URI');
+}
+
+mongoose.Promise = global.Promise;
+mongoose.connect(MONGO_URI, {
+  authSource: 'admin',
+  retryWrites: true,
+  dbName: 'Lyrical-GraphQL',
+  useCreateIndex: true,
+  useNewUrlParser: true,
+});
