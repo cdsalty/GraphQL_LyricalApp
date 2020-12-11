@@ -20,3 +20,24 @@ mongoose.connect(MONGO_URI, {
   useCreateIndex: true,
   useNewUrlParser: true,
 });
+
+Current Goal:
+- Create a song, then add one lyric to it
+--> will need an id reference to the song that gets created. 
+
+1. Add A song:
+- mutation {
+    addSong(title: "Cold Nights in Georgia") {
+      id	
+    }
+  }
+2. Retrieve the id returned
+{
+  "data": {
+    "addSong": {
+      "id": "5fd2f017fa311f296878f8c8"  <--- returned by GraphQL
+    }
+  }
+}
+3. Add a lyric to the song
+- in order to do this, I must use the id returned back from graphql
