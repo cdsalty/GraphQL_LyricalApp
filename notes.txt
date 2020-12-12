@@ -1,3 +1,5 @@
+
+npm run dev
 localhost:4000
 localhost:4000/graphql
 
@@ -41,3 +43,54 @@ Current Goal:
 }
 3. Add a lyric to the song
 - in order to do this, I must use the id returned back from graphql
+mutation {
+  addLyricToSong(songId: "5fd2f017fa311f296878f8c8", content: "Ever see the halo of the moon") {
+    id		<----- this id that gets returned will be the id of the song, NOT the id of the lyric (future note)
+  }
+}
+          -----> This will return the id of the song that was 'modified'
+Results:
+{
+  "data": {
+    "addLyricToSong": {
+      "id": "5fd2f017fa311f296878f8c8"  // <--- this is the id of the song that was modified and not the id of the lyric created
+    }
+  }
+}
+
+4. Ask for a list of songs
+{
+  songs {
+    id
+    title
+    lyrics {
+      content 
+    }
+  }
+}
+
+= RETURNS
+{
+  "data": {
+    "songs": [
+      {
+        "id": "5fd2f017fa311f296878f8c8",
+        "title": "Cold Nights in Georgia",
+        "lyrics": [
+          {
+            "content": "Ever see the halo of the moon"
+          }
+        ]
+      }
+    ]
+  }
+}
+
+____________________________________________________________________________________________________________________________________________________________
+
+Apollo Client Setup:
+- open injdex.js from the client's side(front-end)
+- majority of the work in here will depend on how you wrap the application with some helper functions from the Apollo Client Library
+- React uses Apollo Provider and Apollo Store to work with GraphQL
+  - Apollo Store: communicates directly with the GraphQL Server. It stores data that comes back from the Server. Located on the client side of the application. 
+      
