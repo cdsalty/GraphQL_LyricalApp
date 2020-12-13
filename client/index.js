@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import ApolloClient from "apollo-client";
 import { ApolloProvider } from "react-apollo";
+import SongList from "./components/SongList";
 
 // new instance of Client, assigned as an empty object, that is passed to Apollo Provider
 // ApolloClient will assume it's available on the '/graphql' route, such as http://localhost:4000/graphql (based on the middleware setup on backend)
@@ -10,7 +11,7 @@ const client = new ApolloClient({});
 const Root = () => {
   return (
     <ApolloProvider client={client}>
-      <div>Lyrical App</div>
+      <SongList />
     </ApolloProvider>
   );
 };

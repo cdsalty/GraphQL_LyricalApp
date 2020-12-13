@@ -93,4 +93,12 @@ Apollo Client Setup:
 - majority of the work in here will depend on how you wrap the application with some helper functions from the Apollo Client Library
 - React uses Apollo Provider and Apollo Store to work with GraphQL
   - Apollo Store: communicates directly with the GraphQL Server. It stores data that comes back from the Server. Located on the client side of the application. 
-      
+***---> rest in notes... 
+
+Goal: 
+Create a new component
+  - show a list of all the songs in the application
+    - need to write the query that will go and fetch the data(list of songs) from the server.
+
+SongList.js (fetch a list of songs and rendering on the screen)
+
