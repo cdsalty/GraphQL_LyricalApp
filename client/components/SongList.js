@@ -2,11 +2,13 @@ import gql from "graphql-tag"; // helper to write component queries
 import { graphql } from "react-apollo"; // react-apollo library is similar to the glue layer of the data source to help bond a component with an actual query
 
 // Functional Component route...
-const SongList = () => {
+const SongList = props => {
+  console.log(props);
+
   return <div>SongList</div>;
 };
 
-// Defining the query (doesn't 'excute' the query)
+// Define Query (will not 'excute' the query)
 const query = gql`
   {
     songs {
