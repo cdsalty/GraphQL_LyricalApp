@@ -4,6 +4,10 @@ localhost:4000
 localhost:4000/graphql
 
 
+NPM Modules:
+import gql from 'graphql-tag': used to handle all the different quieries inside the component file (inside SongList.js)
+import {graphql} from 'react-apollo': 
+
 
 Since mLab is migrating to MongoAtlas, you'll need to make the following changes.
 - First, go to your cluster in MongoAtlas, click the security tab, and then add a Atlas Admin. Remeber the username and pass as we will need them below in server.js! While here, grab your connection string by going back to your cluster, clicking the "Connect" button, "Connect Your Application", and then copy the connection string.
@@ -101,4 +105,6 @@ Create a new component
     - need to write the query that will go and fetch the data(list of songs) from the server.
 
 SongList.js (fetch a list of songs and rendering on the screen)
+
+
 
