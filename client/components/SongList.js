@@ -32,7 +32,7 @@ const SongList = ({ data }) => {
   if (data.loading) {
     return <div>Loading</div>;
   }
-  return <li>{renderSongs(data)}</li>;
+  return <ul>{renderSongs(data)}</ul>;
 };
 
 const query = gql`
