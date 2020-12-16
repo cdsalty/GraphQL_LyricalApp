@@ -3,20 +3,16 @@ import { graphql } from "react-apollo"; // react-apollo library is similar to th
 
 /*
 SongList.js (fetch a list of songs and rendering on the screen)
-
 */
-// const SongList = ({ data }) => {
-//   const renderSongs = data => {
-//     return data.songs.map(song => {
-//       return <li key={song.id} className = "collection-item">{song.title}</li>;
-//     });
-//   };
-//   // "load" is handled externally, doesn't need to be state
-//   if (data.loading) {
-//     return <div>Loading</div>;
-//   }
-//   return <ul>{renderSongs(data)}</ul>;
-// };
+
+const query = gql`
+  {
+    songs {
+      id
+      title
+    }
+  }
+`;
 
 const SongList = ({ data }) => {
   const renderSongs = data => {
@@ -32,16 +28,8 @@ const SongList = ({ data }) => {
   if (data.loading) {
     return <div>Loading</div>;
   }
-  return <ul>{renderSongs(data)}</ul>;
+  return <ul className="collection">{renderSongs(data)}</ul>;
 };
-
-const query = gql`
-  {
-    songs {
-      title
-    }
-  }
-`;
 
 export default graphql(query)(SongList);
 
