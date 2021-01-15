@@ -31,7 +31,7 @@ Apollo Setup
         <div>Lyrical App</div>
       </ApolloProvider>
     ) 
-      -> once doing this, go back and create a new instance of the Apollo Client and pass it to the ApolloProvider
+      -> after doing this, go back and create a new instance of the Apollo Client and pass it to the ApolloProvider
         <ApolloProvider client = {client}>
           <div>Lyrical App</div>
         </ApolloProvider>
